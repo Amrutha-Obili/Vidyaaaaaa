@@ -16,7 +16,9 @@
   --display: "Fraunces", Georgia, "Times New Roman", serif;
   --body: "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
 }
-html, body { height: 100%; }
+[hidden] { display: none !important; }
+img { max-width: 100%; }
+html { height: 100%; }
 body {
   margin: 0;
   background: var(--night);
@@ -27,13 +29,15 @@ body {
   padding-left: max(16px, env(safe-area-inset-left, 0px));
   padding-right: max(16px, env(safe-area-inset-right, 0px));
   padding-block: 16px;
+  min-height: 100%;
+  box-sizing: border-box;
   overflow-x: hidden;
   background-image:
     radial-gradient(ellipse 60% 40% at 50% 0%, rgba(242,185,80,.14), transparent 70%),
     repeating-linear-gradient(103deg, rgba(255,255,255,.025) 0 1px, transparent 1px 22px);
 }
 .stage {
-  min-height: 100%;
+  min-height: calc(100dvh - 32px);
   max-width: 560px;
   margin: 0 auto;
   display: flex; flex-direction: column; align-items: center; justify-content: center;
@@ -87,7 +91,7 @@ h1 em { font-style: italic; color: var(--lamp); }
 
 /* artwork reveal */
 .art { background: none; border: 0; padding: 0; cursor: pointer; position: relative; display: block; border-radius: 6px; overflow: hidden; box-shadow: 0 0 0 1px rgba(255,226,163,.25), 0 24px 60px rgba(0,0,0,.6), 0 0 80px rgba(242,185,80,.18); animation: pop .9s cubic-bezier(.2,1.3,.4,1) both; }
-.art img { display: block; width: auto; max-width: 100%; max-height: 66vh; max-height: 66dvh; aspect-ratio: 1116 / 2000; object-fit: cover; }
+.art img { display: block; width: min(86vw, 340px); width: min(86vw, calc(66dvh * 0.558), 340px); height: auto; aspect-ratio: 1116 / 2000; object-fit: cover; }
 .art .tap {
   position: absolute; left: 50%; bottom: 16px; transform: translateX(-50%);
   background: rgba(13,16,24,.82); color: var(--lamp-soft); font-weight: 700; font-size: .95rem;
